@@ -1,4 +1,3 @@
-
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -16,7 +15,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -27,12 +26,16 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
-        
+
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            //Koin
+            implementation(project.dependencies.platform("io.insert-koin:koin-bom:3.5.1"))
+            implementation("io.insert-koin:koin-core")
+            implementation("io.insert-koin:koin-android")
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -47,13 +50,21 @@ kotlin {
             //Navigation PreCompose
             api("moe.tlaster:precompose:1.5.10")
             api("moe.tlaster:precompose-viewmodel:1.5.10")
+
+            // Koin
+
+            implementation(project.dependencies.platform("io.insert-koin:koin-bom:3.5.1"))
+            implementation("io.insert-koin:koin-core")
+            implementation("io.insert-koin:koin-compose")
+            api("moe.tlaster:precompose-koin:1.5.10")
         }
-        iosMain.dependencies{
+        iosMain.dependencies {
             //ios dependencies
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
+
     }
 }
 
@@ -93,7 +104,7 @@ android {
     dependencies {
         debugImplementation(compose.uiTooling)
     }
-    buildFeatures{
+    buildFeatures {
         compose = true
     }
 }
