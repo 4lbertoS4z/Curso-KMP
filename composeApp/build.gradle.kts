@@ -6,6 +6,15 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+    id("app.cash.sqldelight") version "2.0.2"
+}
+
+sqldelight {
+    databases {
+        create("AppDatabase") {
+            packageName.set("com.expenseApp.db")
+        }
+    }
 }
 
 kotlin {
@@ -36,6 +45,10 @@ kotlin {
             implementation(project.dependencies.platform("io.insert-koin:koin-bom:3.5.1"))
             implementation("io.insert-koin:koin-core")
             implementation("io.insert-koin:koin-android")
+
+            // Sqldelight
+            implementation("app.cash.sqldelight:android-driver:2.0.2")
+
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -60,6 +73,8 @@ kotlin {
         }
         iosMain.dependencies {
             //ios dependencies
+            implementation("app.cash.sqldelight:native-driver:2.0.2")
+            implementation("co.touchlab:stately-common:2.0.5")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -104,8 +119,15 @@ android {
     dependencies {
         debugImplementation(compose.uiTooling)
     }
-    buildFeatures {
-        compose = true
-    }
+}
+dependencies {
+    testImplementation(project(":composeApp"))
+    testImplementation(project(":composeApp"))
+    testImplementation(project(":composeApp"))
+    testImplementation(project(":composeApp"))
+    testImplementation(project(":composeApp"))
+    testImplementation(project(":composeApp"))
+    testImplementation(project(":composeApp"))
+    //implementation(project(":composeApp"))
 }
 

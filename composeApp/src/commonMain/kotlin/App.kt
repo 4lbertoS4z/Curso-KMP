@@ -1,5 +1,4 @@
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.FloatingActionButton
@@ -17,21 +16,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import data.ExpenseManager
-import data.ExpenseRepoImplement
 import data.TittleTopBarTypes
-import kotlinproject.composeapp.generated.resources.Res
 import moe.tlaster.precompose.PreComposeApp
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import moe.tlaster.precompose.flow.collectAsStateWithLifecycle
 import moe.tlaster.precompose.navigation.Navigator
 import moe.tlaster.precompose.navigation.path
 import moe.tlaster.precompose.navigation.rememberNavigator
-import moe.tlaster.precompose.viewmodel.viewModel
 import navigation.Navigation
 import org.koin.compose.KoinContext
-import presentation.ExpensesViewModel
-import ui.ExpensesScreen
 
 @Composable
 @Preview
